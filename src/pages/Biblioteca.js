@@ -6,7 +6,6 @@ import { useAuth } from '../contexts/AuthContext';
 function Biblioteca() {
   const [content, setContent] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { user } = useAuth();
 
   useEffect(() => {
     fetchContent();

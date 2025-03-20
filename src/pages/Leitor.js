@@ -13,15 +13,6 @@ function Leitor() {
   const [loading, setLoading] = useState(true);
   const [currentChapter, setCurrentChapter] = useState(null);
 
-  useEffect(() => {
-    if (!user) {
-      toast.error('Faça login para acessar o conteúdo');
-      navigate('/login');
-      return;
-    }
-    fetchContent();
-  }, [id, user, navigate]);
-
   async function fetchContent() {
     try {
       // Buscar informações do conteúdo
@@ -59,6 +50,15 @@ function Leitor() {
       setLoading(false);
     }
   }
+
+  useEffect(() => {
+    if (!user) {
+      toast.error('Faça login para acessar o conteúdo');
+      navigate('/login');
+      return;
+    }
+    fetchContent();
+  }, [id, user, navigate, fetchContent]);
 
   if (loading) {
     return (
